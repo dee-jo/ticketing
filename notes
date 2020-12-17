@@ -1,2 +1,7 @@
 gcloud cli instalation:
 https://gist.github.com/dwchiang/10849350
+
+ISSUES:
+- had problems pushing the image build to gc cluster due to a typo in the image name 
+  (standard: eu.gcr.io/..., had 'gcl' instead of 'gcr' and us instead of eu)
+- had ticketing.dev in /etc/hosts mapped twice, to gc and localhost

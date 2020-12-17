@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: sapphirepencil/auth
+          image: eu.gcr.io/ticketing-dev-298817/auth
 
 ---
 apiVersion: v1
