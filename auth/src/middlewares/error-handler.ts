@@ -12,6 +12,7 @@ export const errorHandler = (
     // console.log('[error-middleware] Handling RequestValidationError');
     res.status(err.statusCode).send({ errors: err.serializeErrors() });
   }
+  
   // else {
   //   res.status(400).send({
   //     errors: [
