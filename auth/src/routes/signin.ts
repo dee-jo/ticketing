@@ -22,14 +22,11 @@ validateRequest,
 async (req: Request, res: Response) => {
   const { email, password } = req.body;
   const existingUser = await User.findOne({ email });
-  
-  console.log('Existing user: ', existingUser);
 
   if (!existingUser) {
-    console.log('existingUser inside the if block: ', existingUser);
     throw new BadRequestError('Invalid credentials');
   }
-
+  
   const passwordsMatch = await Password.compare(
     existingUser.password, 
     password
@@ -51,8 +48,6 @@ async (req: Request, res: Response) => {
   }
 
   res.status(200).send(existingUser);
-
-// res.send('Hi there!');
 });
 
 export { router as signinRouter };
