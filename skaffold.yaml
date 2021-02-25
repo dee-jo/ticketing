@@ -12,17 +12,33 @@ build:
   artifacts:
     - image: eu.gcr.io/ticketing-dev-298817/auth
       context: auth
-      docker: 
+      docker:
         dockerfile: Dockerfile
-      sync: 
+      sync:
         manual:
-          - src: '***/*.ts'
+          - src: "***/*.ts"
             dest: .
     - image: eu.gcr.io/ticketing-dev-298817/client
       context: client
-      docker: 
+      docker:
         dockerfile: Dockerfile
-      sync: 
+      sync:
         manual:
-          - src: '**/*.js'
+          - src: "**/*.js"
+            dest: .
+    - image: eu.gcr.io/ticketing-dev-298817/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "**/*.ts"
+            dest: .
+    - image: eu.gcr.io/ticketing-dev-298817/orders
+      context: orders
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "**/*.ts"
             dest: .
