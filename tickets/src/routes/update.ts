@@ -1,3 +1,4 @@
+import { BadRequestError } from './../../../common/src/errors/bad-request-error';
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import { Ticket } from '../models/ticket';
@@ -27,6 +28,10 @@ router.put('/api/tickets/:id', currentUser, requireAuth, [
   
   if (!ticket) {
     throw new NotFoundError();
+  }
+
+  if (ticket.orderId) {
+    throw new BadRequestError('Cannot edit a reserved ticket');
   }
 
   if (ticket.userId !== req.currentUser!.id) {

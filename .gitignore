@@ -6,3 +6,4 @@ nats-test/node_modules
 concurrency_test/node_modules
 common/node_modules
 common-stephengrinder/node_modules
+expiration/node_modules

@@ -17,7 +17,8 @@ const setup = async () => {
     userId: new mongoose.Types.ObjectId().toHexString()
   }
   // create a fake message object
-  const msg: Partial<Message> = {
+  const msg: Partial<Message> = { 
+  // partial allows to only implement the methods of Message that we need
     ack: jest.fn()
   }
 
@@ -37,7 +38,9 @@ it('creates and saves a ticket', async () => {
 });
 
 it('acks the message', async () => {
+  const { listener, data, msg } = await setup();
   // call the onMessage function with the data object + message object
-
+  await listener.onMessage(data, msg as Message);
   // write assertions to make sure a ticket was created
+  expect(msg.ack).toHaveBeenCalled();
 });
