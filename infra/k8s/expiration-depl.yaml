@@ -15,6 +15,7 @@ spec:
       containers:
         - name: expiration
           image: eu.gcr.io/ticketing-dev-298817/expiration
+          imagePullPolicy: Always
           env:
             - name: NATS_CLIENT_ID
               valueFrom:

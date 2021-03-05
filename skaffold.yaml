@@ -43,7 +43,7 @@ build:
           - src: "**/*.ts"
             dest: .
     - image: eu.gcr.io/ticketing-dev-298817/expiration
-      context: expiraton
+      context: expiration
       docker:
         dockerfile: Dockerfile
       sync:

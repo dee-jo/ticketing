@@ -1,4 +1,3 @@
-import { BadRequestError } from './../../../common/src/errors/bad-request-error';
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import { Ticket } from '../models/ticket';
@@ -9,7 +8,8 @@ import {
   NotFoundError,
   currentUser,
   requireAuth,
-  NotAuthorizedError
+  NotAuthorizedError,
+  BadRequestError
 } from '@djtickets/common';
 
 const router = express.Router();

@@ -5,3 +5,35 @@ ISSUES:
 - had problems pushing the image build to gc cluster due to a typo in the image name 
   (standard: eu.gcr.io/..., had 'gcl' instead of 'gcr' and us instead of eu)
 - had ticketing.dev in /etc/hosts mapped twice, to gc and localhost
+
+
+6 Feb 2021
+  - jest will hang until timeout and fail the test if the api doesn't send back a response
+  - can temporalily change node_modules files directly for debugging (must reverse back!!)
+  - if you don't send a status code from api, it defaults to 200
+
+7 Feb 2021
+- setting new properties on the model makes updates only to the document in memory does not persist it to mongodb (have to do 'await model.save())
+
+check again:
+  - how is the url inside tests get prepended with the cluster domain? (think express automatically adds the url of the server it is currently running on)
+
+
+10 Feb 2021
+  - the kubectl port-forwarding command need to be run in new terminal window, while the pods are running (and provided the pod id of the currently running nats container)
+
+11 Feb 2021
+  - setting the queueGroupsName on NATS listener prevents NATS completelly shutting down a client that got temporarily disconected. And also distributes the events randomly among queueGroupsName members
+
+17 Feb 2021
+  - connecting to mongodb instances inside kubernetes cluster:
+  kubectl exec -it tickets-mongo-depl-685f7f898-tp27w mongo mongodb://localhost:27017/tickets
+  kubectl exec -it orders-mongo-depl-86ddbcc7db-zcthl mongo mongodb://localhost:27017/orders
+
+
+23 Feb 2021
+  - to connect to mongodb running on kubernetes cluster, had to:
+    kubectl exec -it orders-mongo-depl-7789bdc8b8-jd872 mongo mongodb://localhost:27017/orders
+    (or change to 'orders' inside mongo shell by typing 'use orders')
+    > show collections
+    > db.tickets.find({price: 15}).length()
