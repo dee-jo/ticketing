@@ -1,22 +1,26 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-export default ({ url, method, body, onSuccess }) => {
+const useRequest = ({ url, method, body, onSuccess }) => {
 
   const [ errors, setErrors ] = useState(null);
 
-  const doRequest = async () => {
+  const doRequest = async (properties = {}) => {
     try {
       setErrors(null);
-      const response = await axios[method](url, body);
+      const response = await axios[method](
+        url,
+        { ...properties, ...body }
+      );
 
       if (onSuccess) {
         onSuccess(response.data);
       }
-
+     
       return response.data;
     }
     catch (error) {
+      console.log('useRequest error: ', error);
       setErrors(
         <div className="alert alert-danger">
           <h4>Oooops...</h4>
@@ -29,3 +33,5 @@ export default ({ url, method, body, onSuccess }) => {
   }
   return { doRequest, errors };
 }
+
+export default useRequest;

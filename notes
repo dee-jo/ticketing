@@ -37,3 +37,24 @@ check again:
     (or change to 'orders' inside mongo shell by typing 'use orders')
     > show collections
     > db.tickets.find({price: 15}).length()
+
+5 March
+  - was gettning STDIN error when running skaffold. The error gone away after running:
+    kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
+    and changing the apiVersion in the ingress manifest file to networking.k8s.io/v1beta1
+  more on that here:
+  https://stackoverflow.com/questions/61365202/nginx-ingress-service-ingress-nginx-controller-admission-not-found
+
+  - it makes a difference where the app.use(customRouter) is declared!!! should be before the catch-all route declaration in the app.js
+
+  6 March
+  - how jest mocks know that the particular mocked function has been called, since the tests are running locally and the mocked function is actually running in the cluster..???
+  - restarting a single kubernetes pod:
+   kubectl rollout restart deployment [deployment_name]
+
+
+12 March
+  - configure git client ssh keys:
+    cd ~/.ssh
+    ls
+    ssh-add -K ~/.ssh/<private key>
