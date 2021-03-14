@@ -58,3 +58,8 @@ check again:
     cd ~/.ssh
     ls
     ssh-add -K ~/.ssh/<private key>
+
+13 March
+  - selective testing on github workflows wont work if the tests on previous commit (on the existing pull request) have failed
+  - git status will not inform you if github is up to date with local commited changes, it only shows status for local changes.
+  - git merge from the dev branch into master will bring all the recent changes from master into the dev branch
