@@ -15,7 +15,6 @@ spec:
       containers:
         - name: client
           image: sapphirepencil/client
-
 ---
 apiVersion: v1
 kind: Service
