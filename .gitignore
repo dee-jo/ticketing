@@ -9,3 +9,5 @@ common/node_modules
 common-stephengrinder/node_modules
 expiration/node_modules
 .DS_Store
+docker_tutorial/
+typescript_tutorial/
