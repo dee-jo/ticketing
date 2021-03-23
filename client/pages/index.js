@@ -47,7 +47,7 @@ LandingPage.getInitialProps = async (context, client, currentUser) => {
     .then(resp => resp)
     .catch(err => err)
   
-  if (tickets.lengh) {
+  if (resp.lenght) {
     return { tickets: resp };
   }
   else {
