@@ -38,8 +38,10 @@ const LandingPage = ({ currentUser, tickets }) => {
 }
 
 LandingPage.getInitialProps = async (context, client, currentUser) => {
-  const { data } = await client.get('/api/tickets');
-  return { tickets: data };
+  // const { data } = await client.get('/api/tickets');
+  // return { tickets: data };
+  const response = await client.get('/api/tickets');
+  return { gipResponse: response };
 }
 
 export default LandingPage;
