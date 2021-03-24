@@ -52,7 +52,7 @@ LandingPage.getInitialProps = async (context, client, currentUser) => {
         reject(error);
       })
   });
-  promise
+  return promise
     .then(data => {
       return { tickets: data }
     })
