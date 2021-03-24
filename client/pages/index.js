@@ -54,10 +54,10 @@ LandingPage.getInitialProps = async (context, client, currentUser) => {
   });
   return promise
     .then(data => {
-      return { tickets: data }
+      return { tickets: data, error: null }
     })
     .catch(error => {
-      return { error }
+      return { tickets: null, error }
     });
 }
 
