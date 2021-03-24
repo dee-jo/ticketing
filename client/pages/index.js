@@ -45,8 +45,8 @@ LandingPage.getInitialProps = async (context, client, currentUser) => {
   // return { tickets: data };
   const promise = new Promise((resolve, reject) => {
     client.get('/api/tickets')
-      .then((data) => {
-        resolve({data});
+      .then(({data}) => {
+        resolve(data);
       })
       .catch ((error) => {
         reject(error);
