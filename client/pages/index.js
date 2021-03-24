@@ -44,13 +44,13 @@ LandingPage.getInitialProps = async (context, client, currentUser) => {
   // const { data } = await client.get('/api/tickets');
   // return { tickets: data };
   const promise = new Promise((resolve, reject) => {
-    try {
-      const resp = await client.get('/api/tickets');
-      resolve({ data: resp.data });
-    }
-    catch (error) {
-      reject(error)
-    }
+    client.get('/api/tickets')
+      .then((data) => {
+        resolve({data});
+      })
+      .catch ((error) => {
+        reject(error);
+      })
   });
   promise
     .then(data => {
